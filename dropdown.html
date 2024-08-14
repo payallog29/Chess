@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Dropdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .price-display {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <label for="product-dropdown">Select a product:</label>
+    <select id="product-dropdown" onchange="showPrice()">
+        <option value="" disabled selected>Select a product</option>
+        <option value="fish">Fish</option>
+        <option value="mango">Mango</option>
+        <option value="grapes">Grapes</option>
+    </select>
+    
+    <div id="price-display" class="price-display"></div>
+    
+    <script>
+        function showPrice() {
+            const productDropdown = document.getElementById('product-dropdown');
+            const priceDisplay = document.getElementById('price-display');
+            const selectedProduct = productDropdown.value;
+            
+            const prices = {
+                fish: 50,
+                mango: 30,
+                grapes: 80
+            };
+            
+            let priceText = '';
+            
+            if (prices[selectedProduct] !== undefined) {
+                priceText = `${selectedProduct.charAt(0).toUpperCase() + selectedProduct.slice(1)} price is ${prices[selectedProduct]} rs`;
+            }
+            
+            priceDisplay.textContent = priceText;
+        }
+    </script>
+</body>
+</html>
